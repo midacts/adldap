@@ -1,0 +1,53 @@
+# This file is managed by the Puppet Master DEV-PUP-01
+# Any changes to this file will be overwritten
+#
+# If you need any additional assistance, please contact your system
+# administrator or the Puppet Master
+#
+# == Author
+#
+# John McCarthy <midactsmystery@gmail.com>
+#
+# - http://www.midactstech.blogspot.com -
+# - https://www.github.com/Midacts -
+#
+# == Date
+#
+# 5th of March, 2014
+#
+# -- Version 1.0 --
+#
+[global]
+
+  security                              = ads
+  workgroup                             = EXAMPLE
+  realm                                 = EXAMPLE.COM
+  password server                       = DOMAINCONTROLLER.EXAMPLE.COM
+  kerberos method                       = secrets and keytab
+  log file                              = /var/log/samba/%m.log
+  template homedir                      = /home/%D/%U
+  template shell                        = /bin/bash
+  encrypt passwords                     = Yes
+  client signing                        = Yes
+  client use spnego                     = Yes
+  winbind separator                     = +
+  winbind enum users                    = Yes
+  winbind enum groups                   = Yes
+  winbind use default domain            = Yes
+  winbind refresh tickets               = Yes
+  idmap config ORTHOBANC : schema_mode  = rfc2307
+  idmap config ORTHOBANC : range        = 10000000-29999999
+  idmap config ORTHOBANC : default      = Yes
+  idmap config ORTHOBANC : backend      = rid
+  idmap config * : range                = 20000-29999
+  idmap config * : backend              = tdb
+
+[sysvol]
+
+  path                                  = /var/lib/samba/sysvol
+  read only                             = no
+
+[netlogon]
+
+  path                                  = /var/lib/samba/sysvol/EXAMPLE.COM/scripts
+  read only                             = no

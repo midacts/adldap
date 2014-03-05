@@ -1,0 +1,50 @@
+# This file is managed by the Puppet Master DEV-PUP-01
+# Any changes to this file will be overwritten
+#
+# If you need any additional assistance, please contact your system 
+# administrator or the Puppet Master
+#
+# == Author
+#
+# John McCarthy <midactsmystery@gmail.com>
+#
+# - http://www.midactstech.blogspot.com -
+# - https://www.github.com/Midacts -
+#
+# == Date
+#
+# 5th of March, 2014
+#
+# -- Version 1.0 --
+#
+[libdefaults]
+        clock-skew              = 300
+        default_realm           = EXAMPLE.COM
+        dns_lookup_realm        = true
+        dns_lookup_kdc          = true
+        forwardable             = true
+        proxiable               = true
+        ticket_lifetime         = 24000
+        default_tgs_enctypes    = rc4-hmac aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96
+        default_tkt_enctypes    = rc4-hmac aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96
+        permitted_enctypes      = rc4-hmac aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96
+
+[realms]
+        ORTHOBANC.LOCAL = {
+                kdc             = DOMAINCONTROLLER.EXAMPLE.COM
+                admin_server    = DOMAINCONTROLLER.EXAMPLE.COM
+                default_domain  = EXAMPLE.COM
+        }
+
+[domain_realm]
+        .example.com	        = EXAMPLE.COM
+       example.com	        = EXAMPLE.COM
+
+[login]
+        krb4_convert            = true
+        krb4_get_tickets        = false
+
+[logging]
+        default                 = /var/log/krb5libs.log
+        kdc                     = /var/log/kdc.log
+        admin_server            = /var/log/kadmind.log

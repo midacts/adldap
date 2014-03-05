@@ -1,0 +1,42 @@
+# This file is managed by the Puppet Master DEV-PUP-01
+# Any changes to this file will be overwritten
+#
+# If you need any additional assistance, please contact your system
+# administrator or the Puppet Master
+#
+# == Author
+#
+# John McCarthy <midactsmystery@gmail.com>
+#
+# - http://www.midactstech.blogspot.com -
+# - https://www.github.com/Midacts -
+#
+# == Date
+#
+# 5th of March, 2014
+#
+# -- Version 1.0 --
+#
+auth        required      pam_env.so
+auth        sufficient    pam_winbind.so use_first_pass
+auth        sufficient    pam_unix.so likeauth nullok
+auth        sufficient    pam_krb5.so use_first_pass
+auth        sufficient    pam_smb_auth.so use_first_pass nolocal
+auth        required      pam_deny.so
+
+account     required      pam_unix.so broken_shadow
+account     sufficient    pam_succeed_if.so uid < 100 quiet
+account     sufficient    pam_krb5.so
+account     sufficient    pam_winbind.so
+account     required      pam_permit.so
+
+password    requisite     pam_cracklib64.so retry=3
+password    sufficient    pam_unix.so nullok use_authtok md5 shadow
+password    sufficient    pam_krb5.so use_authtok
+password    sufficient    pam_winbind.so use_authtok
+password    required      pam_deny.so
+
+session     required      pam_limits.so
+session     required      pam_unix.so
+session     required      pam_mkhomedir.so umask=0022 skel=/etc/skel
+session     optional      pam_krb5.so

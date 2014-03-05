@@ -1,0 +1,32 @@
+# This file is managed by the Puppet Master DEV-PUP-01
+# Any changes to this file will be overwritten
+#
+# If you need any additional assistance, please contact your system
+# administrator or the Puppet Master
+#
+# == Author
+#
+# John McCarthy <midactsmystery@gmail.com>
+#
+# - http://www.midactstech.blogspot.com -
+# - https://www.github.com/Midacts -
+#
+# == Date
+#
+# 5th of March, 2014
+#
+# -- Version 1.0 --
+#
+passwd:         compat winbind
+group:          compat winbind
+shadow:         compat winbind
+
+hosts:          files dns
+networks:       files
+
+protocols:      db files
+services:       db files
+ethers:         db files
+rpc:            db files
+
+netgroup:       nis
