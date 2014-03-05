@@ -56,7 +56,7 @@ class adldap::pam {
 
     redhat,centos: {
 
-      file { '/etc/pam.d/system-auth':
+      file { '/etc/pam.d/system-auth-ac':
       ensure      => present,
       content     => template('adldap/system-auth.erb'),
       mode        => 640,
@@ -71,7 +71,7 @@ class adldap::pam {
       mode        => 640,
       owner       => root,
       group       => root,
-      require     => File['/etc/pam.d/system-auth'],
+      require     => File['/etc/pam.d/system-auth-ac'],
       }
 
     }
