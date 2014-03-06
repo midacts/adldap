@@ -27,7 +27,7 @@ class adldap::adjoin {
   exec { 'adjoin':
     command	=> "/usr/bin/net ads join -U ${adldap::secret::join_username}%${adldap::secret::join_password}",
     unless	=> '/usr/bin/net ads testjoin',
-    require    => Class['adldap::winbind'],
+    require     => Class['adldap::winbind'],
   }
 
 }
