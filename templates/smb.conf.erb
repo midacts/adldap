@@ -19,7 +19,7 @@
 #
 [global]
 
-  security                              = ads
+  security                              = domain
   workgroup                             = EXAMPLE
   realm                                 = EXAMPLE.COM
   password server                       = DOMAINCONTROLLER.EXAMPLE.COM
@@ -30,6 +30,7 @@
   encrypt passwords                     = Yes
   client signing                        = Yes
   client use spnego                     = Yes
+  map to guest                          = Never
   winbind separator                     = +
   winbind enum users                    = Yes
   winbind enum groups                   = Yes
